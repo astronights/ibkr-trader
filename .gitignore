@@ -1,0 +1,6 @@
+# Config
+
+
+# Typescript Ignores
+/node_modules
+/build
