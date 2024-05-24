@@ -1,15 +1,20 @@
 import express from 'express';
-import * as dotenv from 'dotenv'
+import cors from "cors";
+import * as CONFIG from "./config";
+import { createServer } from "http";
 
-dotenv.config()
+import router from "./api/router";
+
 
 const app = express();
-const port = parseInt(process.env.APP_PORT);
+app.use(express.json());
+app.use(cors({ origin: "*" }));
+app.use("/", router);
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+const HOST = CONFIG.HOST;
+const PORT = CONFIG.PORT;
 
-app.listen(port, () => {
-  return console.log(`Express is listening at http://localhost:${port}`);
-});
+const httpServer = createServer(app).listen(PORT, () => {
+    console.log(`Started server at ${HOST}:${PORT}`);
+    updatePairsTask.start();
+  });
