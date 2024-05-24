@@ -16,5 +16,5 @@ const PORT = CONFIG.PORT;
 
 const httpServer = createServer(app).listen(PORT, () => {
     console.log(`Started server at ${HOST}:${PORT}`);
-    updatePairsTask.start();
+    // updatePairsTask.start();
   });
